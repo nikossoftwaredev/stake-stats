@@ -8,6 +8,14 @@ const StatsPage = () => {
       <div className="text-xl mb-4 p-4 bg-base-300 rounded-lg shadow text-base-content">
         Showing stats for <strong>No0dle2000</strong> from September 2, 2022 to
         January 14, 2024{" "}
+        <audio
+          autoPlay
+          id="song"
+          className="block w-full max-w-md mx-auto"
+          controls
+        >
+          <source src="/songs/manaviki.mp3" type="audio/mpeg" />
+        </audio>
       </div>
       <div className="flex flex-wrap gap-4 text-lg">
         <span className="p-4 bg-base-300 rounded-lg shadow text-base-content">
