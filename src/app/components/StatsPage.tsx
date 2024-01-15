@@ -5,14 +5,27 @@ const StatsPage = () => {
   const { stats, totalProfit, totalBets, totalWagered } = calculateStats();
   return (
     <div>
-      <div>
-        Total Profit: <strong>{totalProfit.toFixed(2)} €</strong>
-        <br />
-        Total Bets: <strong>{totalBets}</strong>
-        <br />
-        Total Wagered: <strong>{totalWagered.toFixed(2)} €</strong>
+      <div className="text-xl mb-4 p-4 bg-base-300 rounded-lg shadow text-base-content">
+        Showing stats for <strong>No0dle2000</strong> from September 2, 2022 to
+        January 14, 2024{" "}
       </div>
-      <section className="grid grid-cols-3 gap-4">
+      <div className="flex flex-wrap gap-4 text-lg">
+        <span className="p-4 bg-base-300 rounded-lg shadow text-base-content">
+          Total Profit:{" "}
+          <strong
+            className={`${totalProfit > 0 ? "text-green-500" : "text-red-500"}`}
+          >
+            {totalProfit.toLocaleString()} €
+          </strong>
+        </span>
+        <span className="p-4 bg-base-300 rounded-lg shadow text-base-content">
+          Total Bets: <strong>{totalBets.toLocaleString()}</strong>
+        </span>
+        <span className="p-4 bg-base-300 rounded-lg shadow text-base-content">
+          Total Wagered: <strong>{totalWagered.toLocaleString()} €</strong>
+        </span>
+      </div>
+      <section className="grid md:grid-cols-3 gap-4 mt-4">
         {stats.map(({ gameName, numberOfBets, amount, payout, profit }) => {
           return (
             <StatCard
