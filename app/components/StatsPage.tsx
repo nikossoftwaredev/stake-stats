@@ -7,7 +7,7 @@ const StatsPage = () => {
     <div>
       <div className="text-xl mb-4 p-4 bg-base-300 rounded-lg shadow text-base-content">
         Showing stats for <strong>No0dle2000</strong> from September 2, 2022 to
-        January 14, 2024{" "}
+        January 25, 2024{" "}
         <audio
           autoPlay
           id="song"
@@ -33,7 +33,7 @@ const StatsPage = () => {
           Total Wagered: <strong>{totalWagered.toLocaleString()} €</strong>
         </span>
       </div>
-      <section className="grid md:grid-cols-3 gap-4 mt-4">
+      <section className="grid md:grid-cols-3 xl:grid-cols-6 gap-4 mt-4">
         {stats.map(({ gameName, numberOfBets, amount, payout, profit }) => {
           return (
             <StatCard
