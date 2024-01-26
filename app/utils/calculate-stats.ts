@@ -26,31 +26,37 @@ const calculateStats = () => {
     .readdirSync("./data/stake-bets")
     .filter((file) => path.extname(file) === ".json");
 
+  console.log(jsonsInDir.length);
   jsonsInDir.forEach((file) => {
     const fileData = fs.readFileSync(path.join("./data/stake-bets", file));
     const json = JSON.parse(fileData.toString());
 
-    json.forEach(({ amount, payout, gameName, currency, iid }: any) => {
-      if (!Object.keys(values).includes(currency as string)) return;
+    json.forEach(
+      ({ amount, payout, gameName, currency, iid, payoutMultiplier }: any) => {
+        if (gameName === "Crazy Time" && payoutMultiplier > 5) {
+          console.log("Crazy Time", amount, payout, iid);
+        }
+        if (!Object.keys(values).includes(currency as string)) return;
 
-      const valueMultiplier = values[currency as string] ?? 1;
+        const valueMultiplier = values[currency as string] ?? 1;
 
-      const newAmount = amount * valueMultiplier;
-      const newPayout = payout * valueMultiplier;
-      const diff = newPayout - newAmount;
+        const newAmount = amount * valueMultiplier;
+        const newPayout = payout * valueMultiplier;
+        const diff = newPayout - newAmount;
 
-      totalProfit = totalProfit + diff;
-      totalBets = totalBets + 1;
-      totalWagered = totalWagered + newPayout;
+        totalProfit = totalProfit + diff;
+        totalBets = totalBets + 1;
+        totalWagered = totalWagered + newPayout;
 
-      statsInfo[gameName] = {
-        gameName,
-        numberOfBets: (statsInfo[gameName]?.numberOfBets ?? 0) + 1,
-        amount: (statsInfo[gameName]?.amount ?? 0) + newAmount,
-        payout: (statsInfo[gameName]?.payout ?? 0) + newPayout,
-        profit: (statsInfo[gameName]?.profit ?? 0) + diff,
-      };
-    });
+        statsInfo[gameName] = {
+          gameName,
+          numberOfBets: (statsInfo[gameName]?.numberOfBets ?? 0) + 1,
+          amount: (statsInfo[gameName]?.amount ?? 0) + newAmount,
+          payout: (statsInfo[gameName]?.payout ?? 0) + newPayout,
+          profit: (statsInfo[gameName]?.profit ?? 0) + diff,
+        };
+      }
+    );
   });
 
   return {
