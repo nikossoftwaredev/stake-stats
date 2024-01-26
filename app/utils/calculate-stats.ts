@@ -21,39 +21,63 @@ const calculateStats = () => {
   let totalProfit = 0;
   let totalBets = 0;
   let totalWagered = 0;
+  let i = 0;
 
   const jsonsInDir = fs
     .readdirSync("./data/stake-bets")
     .filter((file) => path.extname(file) === ".json");
 
-  console.log(jsonsInDir.length);
   jsonsInDir.forEach((file) => {
     const fileData = fs.readFileSync(path.join("./data/stake-bets", file));
     const json = JSON.parse(fileData.toString());
 
     json.forEach(
-      ({ amount, payout, gameName, currency, iid, payoutMultiplier }: any) => {
-        if (gameName === "Crazy Time" && payoutMultiplier > 5) {
-          console.log("Crazy Time", amount, payout, iid);
-        }
-        if (!Object.keys(values).includes(currency as string)) return;
+      ({
+        amount,
+        payout,
+        gameName,
+        currency,
+        iid,
+        payoutMultiplier,
+        data = {},
+      }: any) => {
+        let finalGameName: string = gameName ?? data.gameName;
+        let finalCurrency: string = currency ?? data.currency;
+        let finalAmount: number = amount ?? data.amount;
+        let finalPayout: number = payout ?? data.payout;
 
-        const valueMultiplier = values[currency as string] ?? 1;
+        if (!Object.keys(values).includes(finalCurrency)) return;
 
-        const newAmount = amount * valueMultiplier;
-        const newPayout = payout * valueMultiplier;
+        const valueMultiplier = values[finalCurrency as string] ?? 1;
+
+        const newAmount = finalAmount * valueMultiplier;
+        const newPayout = finalPayout * valueMultiplier;
         const diff = newPayout - newAmount;
 
         totalProfit = totalProfit + diff;
         totalBets = totalBets + 1;
         totalWagered = totalWagered + newPayout;
+        if (isNaN(diff) && i === 0) {
+          i = 1;
+          console.log({
+            iid,
+            valueMultiplier,
+            diff,
+            newAmount,
+            newPayout,
+            finalGameName,
+            finalCurrency,
+            finalAmount,
+            finalPayout,
+          });
+        }
 
-        statsInfo[gameName] = {
-          gameName,
-          numberOfBets: (statsInfo[gameName]?.numberOfBets ?? 0) + 1,
-          amount: (statsInfo[gameName]?.amount ?? 0) + newAmount,
-          payout: (statsInfo[gameName]?.payout ?? 0) + newPayout,
-          profit: (statsInfo[gameName]?.profit ?? 0) + diff,
+        statsInfo[finalGameName] = {
+          gameName: finalGameName,
+          numberOfBets: (statsInfo[finalGameName]?.numberOfBets ?? 0) + 1,
+          amount: (statsInfo[finalGameName]?.amount ?? 0) + newAmount,
+          payout: (statsInfo[finalGameName]?.payout ?? 0) + newPayout,
+          profit: (statsInfo[finalGameName]?.profit ?? 0) + diff,
         };
       }
     );

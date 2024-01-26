@@ -1,1 +1,27 @@
-[{"id":"c8d10c93-a0f0-4a2a-9513-7eeeae3af5f0","ip":"2.86.6.62/32","iid":"house:199022308072","type":"casino","nonce":28260,"value":0.38737501549500003,"active":false,"amount":0.00523731,"gameId":"efd64516-8290-4ae1-9330-fe5a39dfa027","mobile":true,"payout":0,"userId":"9e74256f-1468-43fe-9124-54f6db33838a","currency":"ltc","gameName":"limbo","createdAt":1704042517258,"updatedAt":1704042517258,"clientSeed":"e5a05e4c02ba30bf","stateLimbo":{"result":1.2990214263592084,"multiplierTarget":100},"clientSeedId":"f7325a5b-2496-4660-bda0-d22153384680","serverSeedId":"1f5501be-9b40-4748-b228-ab5d5f3e6b6e","expectedAmount":0.0000523731,"serverSeedHash":"81d8a201308e2ce42f5f87bcd8258f10489705c5d64815f08e053bef2c7529ad","payoutMultiplier":0}]
+[
+  {
+    "id": "c8d10c93-a0f0-4a2a-9513-7eeeae3af5f0",
+    "ip": "2.86.6.62/32",
+    "iid": "house:199022308072",
+    "type": "casino",
+    "nonce": 28260,
+    "value": 0.38737501549500003,
+    "active": false,
+    "amount": 0.00523731,
+    "gameId": "efd64516-8290-4ae1-9330-fe5a39dfa027",
+    "mobile": true,
+    "payout": 0,
+    "userId": "9e74256f-1468-43fe-9124-54f6db33838a",
+    "currency": "ltc",
+    "gameName": "limbo",
+    "createdAt": 1704042517258,
+    "updatedAt": 1704042517258,
+    "clientSeed": "e5a05e4c02ba30bf",
+    "stateLimbo": { "result": 1.2990214263592084, "multiplierTarget": 100 },
+    "clientSeedId": "f7325a5b-2496-4660-bda0-d22153384680",
+    "serverSeedId": "1f5501be-9b40-4748-b228-ab5d5f3e6b6e",
+    "expectedAmount": 0.0000523731,
+    "serverSeedHash": "81d8a201308e2ce42f5f87bcd8258f10489705c5d64815f08e053bef2c7529ad",
+    "payoutMultiplier": 0
+  }
+]
