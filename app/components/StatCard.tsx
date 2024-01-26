@@ -2,7 +2,7 @@ import { StatsInfo } from "../utils/calculate-stats";
 import { formatNumber } from "../utils/number";
 
 const StatCard = ({
-  gameName,
+  gameName = "",
   amount,
   numberOfBets,
   payout,

@@ -9,8 +9,14 @@ export interface StatsInfo {
   profit: number;
 }
 
+const values: Record<string, number> = {
+  ltc: 64.26,
+  btc: 37141,
+  usdt: 0.91,
+  eth: 2046,
+};
+
 const calculateStats = () => {
-  const valueOfLtc = 64.26;
   const statsInfo: Record<string, StatsInfo> = {};
   let totalProfit = 0;
   let totalBets = 0;
@@ -25,9 +31,9 @@ const calculateStats = () => {
     const json = JSON.parse(fileData.toString());
 
     json.forEach(({ amount, payout, gameName, currency, iid }: any) => {
-      if (currency !== "ltc" && currency !== "usdt") return;
+      if (!Object.keys(values).includes(currency as string)) return;
 
-      const valueMultiplier = currency === "ltc" ? valueOfLtc : 0.91;
+      const valueMultiplier = values[currency as string] ?? 1;
 
       const newAmount = amount * valueMultiplier;
       const newPayout = payout * valueMultiplier;
