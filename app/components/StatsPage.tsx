@@ -1,4 +1,5 @@
 import calculateStats from "../utils/calculate-stats";
+import GamblingDates from "./GamblingDates";
 import StatCard from "./StatCard";
 
 const StatsPage = () => {
@@ -6,8 +7,7 @@ const StatsPage = () => {
   return (
     <div>
       <div className="text-xl mb-4 p-4 bg-base-300 rounded-lg shadow text-base-content">
-        Showing stats for <strong>No0dle2000</strong> from September 2, 2022 to
-        January 25, 2024{" "}
+        <GamblingDates />
         <audio
           autoPlay
           id="song"
