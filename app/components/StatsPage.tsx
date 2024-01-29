@@ -1,3 +1,4 @@
+import { endDate, startDate } from "../config";
 import calculateStats from "../utils/calculate-stats";
 import GamblingDates from "./GamblingDates";
 import StatCard from "./StatCard";
@@ -17,22 +18,31 @@ const StatsPage = () => {
           <source src="/songs/manaviki.mp3" type="audio/mpeg" />
         </audio>
       </div>
-      <div className="flex flex-wrap gap-4 text-lg">
-        <span className="p-4 bg-base-300 rounded-lg shadow text-base-content">
-          Total Profit:{" "}
-          <strong
-            className={`${totalProfit > 0 ? "text-green-500" : "text-red-500"}`}
-          >
-            {totalProfit.toLocaleString()} €
-          </strong>
-        </span>
-        <span className="p-4 bg-base-300 rounded-lg shadow text-base-content">
-          Total Bets: <strong>{totalBets.toLocaleString()}</strong>
-        </span>
-        <span className="p-4 bg-base-300 rounded-lg shadow text-base-content">
-          Total Wagered: <strong>{totalWagered.toLocaleString()} €</strong>
-        </span>
+      <div className="stats shadow gap-2">
+        <div className="stat text-green-500 p-4 bg-base-300 rounded-lg shadow">
+          <div className="stat-title">Total Profit</div>
+          <div className="stat-value">{totalProfit.toLocaleString()} €</div>
+        </div>
+        <div className="stat p-4 bg-base-300 rounded-lg shadow">
+          <div className="stat-title">Total Bets</div>
+          <div className="stat-value text-primary">
+            {totalBets.toLocaleString()}
+          </div>
+        </div>
+        <div className="stat p-4 bg-base-300 rounded-lg shadow ">
+          <div className="stat-title">Total Wagered:</div>
+          <div className="stat-value ">{totalWagered.toLocaleString()} €</div>
+        </div>
+        <div className="stat p-4 bg-base-300 rounded-lg shadow text-gray-500 ">
+          <div className="stat-title">Start Date:</div>
+          <div className="stat-value ">{startDate.toLocaleDateString()}</div>
+        </div>
+        <div className="stat p-4 bg-base-300 rounded-lg shadow text-gray-500 ">
+          <div className="stat-title">End Date:</div>
+          <div className="stat-value ">{endDate.toLocaleDateString()}</div>
+        </div>
       </div>
+
       <section className="grid md:grid-cols-3 xl:grid-cols-6 gap-4 mt-4">
         {stats.map(({ gameName, numberOfBets, amount, payout, profit }) => {
           return (
