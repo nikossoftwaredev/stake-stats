@@ -44,25 +44,25 @@ const GamblingDates = () => {
       <div className="stat-title text-2xl mb-2"> Gambling free for</div>
       <div className="grid grid-flow-col gap-5 text-center auto-cols-max">
         <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
-          <span className="countdown font-mono text-5xl">
+          <span className="countdown font-mono text-2xl">
             {timeFromNow.days}
           </span>
           days
         </div>
         <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
-          <span className="countdown font-mono text-5xl">
+          <span className="countdown font-mono text-2xl">
             {timeFromNow.hours}
           </span>
           hours
         </div>
         <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
-          <span className="countdown font-mono text-5xl">
+          <span className="countdown font-mono text-2xl">
             {timeFromNow.minutes}
           </span>
           min
         </div>
         <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
-          <span className="countdown font-mono text-5xl">
+          <span className="countdown font-mono text-2xl">
             {timeFromNow.seconds}
           </span>
           sec

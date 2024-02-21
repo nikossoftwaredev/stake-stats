@@ -18,7 +18,7 @@ const StatsPage = () => {
           <source src="/songs/manaviki.mp3" type="audio/mpeg" />
         </audio>
       </div>
-      <div className="stats shadow gap-2">
+      <div className="stats shadow gap-2 flex flex-wrap">
         <div className="stat text-green-500 p-4 bg-base-300 rounded-lg shadow">
           <div className="stat-title">Total Profit</div>
           <div className="stat-value">{totalProfit.toLocaleString()} €</div>
